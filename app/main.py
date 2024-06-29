@@ -108,10 +108,6 @@ if __name__ == "__main__":
         cursor.close()
         cnxn.close()
 
-
-
-
-
     else:
         print('=====================================================================')
         print('US Holiday')
