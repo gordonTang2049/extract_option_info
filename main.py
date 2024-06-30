@@ -69,9 +69,8 @@ def main():
 
         df_code = pd.read_sql('SELECT TRIM([TICKER]) as TICKER, [IsShares] FROM metadata ORDER BY TICKER',cnxn).iloc[task_batch_start:task_batch_end, :2]
         
-        print(df_code)
-        
         cursor = cnxn.cursor()
+        
     
         # STATEMENT = sql.get_insert_statement(cursor, tableName)
         
