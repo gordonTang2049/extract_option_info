@@ -71,7 +71,6 @@ def main():
         
         cursor = cnxn.cursor()
         
-    
         # STATEMENT = sql.get_insert_statement(cursor, tableName)
         
         for i in range(len(df_code)):
