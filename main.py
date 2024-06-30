@@ -37,7 +37,7 @@ connection_string = 'DRIVER={'+ sql_server +'};SERVER='+server+';DATABASE='+data
 # if __name__ == "__main__":
 def main():
 
-    stoptime_From, stoptime_to = [int(t) for t in stoptime_range.split('-')]
+    stoptime_from, stoptime_to = [int(t) for t in stoptime_range.split('-')]
 
 # ========================================================
     # big batch / session batch
