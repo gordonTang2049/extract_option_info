@@ -31,8 +31,6 @@ RUN mkdir /opt/app
 
 WORKDIR /opt/app
 
-ADD ./ ./
-
-# COPY ./app/* /opt/app
+COPY ./ ./
 
 RUN pip install -r ./requirements.txt

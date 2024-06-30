@@ -3,7 +3,6 @@ import os
 import pandas as pd
 import numpy as np
 
-
 from datetime import datetime, timedelta, date
 import time
 import random
@@ -23,7 +22,7 @@ server = os.environ['SERVER_NAME']
 database = os.environ['DB_NAME']
 username = os.environ['USER']
 password = os.environ['DB_PASSWORD']
-session_batch_info = os.environ['SESSION_BATCH_INO']
+session_batch_info = os.environ['SESSION_BATCH_INFO']
 us_holidays = os.environ['US_HOLIDAYS']
 
 nth_batch = os.environ['NTH_BATCH']
@@ -41,8 +40,7 @@ def main():
 
 # ========================================================
     # big batch / session batch
-    session_batch_start, session_batch_end, session_batch_step = 
-        [int(dataRange) for dataRange in session_batch_info.split(',')]
+    session_batch_start, session_batch_end, session_batch_step = [int(dataRange) for dataRange in session_batch_info.split(',')]
 # ========================================================
     
 # breakdown smaller batch with nth_batch
