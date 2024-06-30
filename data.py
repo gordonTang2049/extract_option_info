@@ -26,16 +26,17 @@ class Data:
             text=True, 
             check=True)
 
-        data = json.loads(js.stdout)
+        self.data = json.loads(js.stdout)
         
-        df = pd.json_normalize(data['table']['rows'], max_level=0)
+        df = pd.json_normalize(self.data['table']['rows'], max_level=0)
 
         return df
 
     def process_option_table(self) -> pd.DataFrame:
+
         df = self.fetch_option_data()
         
-        df['UNDERLYING_TRADE_PRICE'] = float(re.search(r"\$\d+\.\d+\s", df['lastTrade']).group().replace("$","").strip())
+        df['UNDERLYING_TRADE_PRICE'] = float(re.search(r"\$\d+\.\d+\s", self.data['lastTrade']).group().replace("$","").strip())
         
         # =========================================================================
         # =========================================================================
