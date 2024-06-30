@@ -34,7 +34,8 @@ tableName = "option"
 
 connection_string = 'DRIVER={'+ sql_server +'};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password + ';TrustServerCertificate=yes;'
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
+def main():
 
     stoptime_From, stoptime_to = [int(t) for t in stoptime_range.split('-')]
 
@@ -55,7 +56,6 @@ if __name__ == "__main__":
     task_batch_start, task_batch_end = util.batching()
 # ========================================================
 
-    
     us_holidays_str_list = [str(_date) for _date in us_holidays.split(',')]
     
     # date - year month day
@@ -113,3 +113,5 @@ if __name__ == "__main__":
         print('US Holiday')
         print('=====================================================================')
 
+
+main()
