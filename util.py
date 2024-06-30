@@ -25,4 +25,4 @@ class Util:
 
         num_of_batch = int((self.batch_start - self.batch_end) / self.batch_step)
 
-        return np.reshape(batch_arr, (num_of_batch,2))[self.nth_batch]
+        return np.reshape(batch_arr, (num_of_batch,2))[int(self.nth_batch)]
