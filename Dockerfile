@@ -29,8 +29,10 @@ RUN apt-get update && apt-get upgrade -y
 
 RUN mkdir /opt/app
 
-COPY ./app/* /opt/app
-
 WORKDIR /opt/app
+
+ADD ./ ./
+
+# COPY ./app/* /opt/app
 
 RUN pip install -r ./requirements.txt
