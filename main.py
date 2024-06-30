@@ -23,10 +23,11 @@ database = os.environ['DB_NAME']
 username = os.environ['USER']
 password = os.environ['DB_PASSWORD']
 session_batch_info = os.environ['SESSION_BATCH_INFO']
-us_holidays = os.environ['US_HOLIDAYS']
 
 nth_batch = os.environ['NTH_BATCH']
 stoptime_range = os.environ['STOPTIME_RANGE']
+
+us_holidays = os.environ['US_HOLIDAYS']
 
 sql_server = "FreeTDS"
 tableName = "option"
@@ -46,10 +47,10 @@ def main():
 # breakdown smaller batch with nth_batch
 # ========================================================
     util = Util(
-        nth_batch, 
-        session_batch_start, 
-        session_batch_end, 
-        session_batch_step)
+        int(nth_batch), 
+        int(session_batch_start), 
+        int(session_batch_end), 
+        int(session_batch_step))
 
     task_batch_start, task_batch_end = util.batching()
 # ========================================================
@@ -74,11 +75,9 @@ def main():
         
         for i in range(len(df_code)):
             
-            time.sleep(random.randint(stoptime_from, stoptime_to))
-
+            time.sleep(random.randint(int(stoptime_from), int(stoptime_to)))
 
             clean_ticker = str.strip(df_code.iloc[i, 0])
-
 
             print('Process :', clean_ticker)
 
