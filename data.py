@@ -27,6 +27,8 @@ class Data:
             check=True)
 
         data = json.loads(js.stdout)
+        
+        print(data)
 
         df = pd.json_normalize(data['table']['rows'], max_level=0)
 
@@ -35,6 +37,8 @@ class Data:
     def process_option_table(self) -> pd.DataFrame:
         df = self.fetch_option_data()
         
+        print(df)
+
         df['UNDERLYING_TRADE_PRICE'] = float(re.search(r"\$\d+\.\d+\s", data['lastTrade']).group().replace("$","").strip())
         
         # =========================================================================
