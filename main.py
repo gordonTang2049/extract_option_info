@@ -23,10 +23,8 @@ database = os.environ['DB_NAME']
 username = os.environ['USER']
 password = os.environ['DB_PASSWORD']
 session_batch_info = os.environ['SESSION_BATCH_INFO']
-
 nth_batch = os.environ['NTH_BATCH']
 stoptime_range = os.environ['STOPTIME_RANGE']
-
 us_holidays = os.environ['US_HOLIDAYS']
 
 sql_server = "FreeTDS"
@@ -60,9 +58,6 @@ def main():
     # date - year month day
     us_holidays_dates = [date(int(_date.split('-')[0]), int(_date.split('-')[1]), int(_date.split('-')[2])) for _date in us_holidays_str_list]
 
-    print('today' , date.today())
-    print('timedelta(days = 1)' , timedelta(days = 1))
-
     if (date.today() - timedelta(days = 1)) not in us_holidays_dates:
 
         cnxn = pyodbc.connect(connection_string, autocommit=True)
@@ -71,7 +66,7 @@ def main():
         
         cursor = cnxn.cursor()
         
-        # STATEMENT = sql.get_insert_statement(cursor, tableName)
+        STATEMENT = sql.get_insert_statement(cursor, tableName)
         
         for i in range(len(df_code)):
             
@@ -91,9 +86,7 @@ def main():
 
                 df = data.process_option_table()
                 
-                print(df)
-                
-                # sql.insert_data(cursor, STATEMENT, df)
+                sql.insert_data(cursor, STATEMENT, df)
 
             except Exception as error:
                 

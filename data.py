@@ -96,6 +96,4 @@ class Data:
         'p_Volume',
         'p_Openinterest']]
 
-        print('insdie data class', df)
-
         return df
