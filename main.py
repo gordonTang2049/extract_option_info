@@ -19,6 +19,7 @@ from sql_op import Sql_op
 # , errormsg_outpath : str
 
 sql = Sql_op()
+
 server = os.environ['SERVER_NAME']
 database = os.environ['DB_NAME']
 username = os.environ['USER']

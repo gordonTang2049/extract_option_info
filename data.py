@@ -36,7 +36,7 @@ class Data:
 
         df = self.fetch_option_data()
         
-        df['UNDERLYING_TRADE_PRICE'] = float(re.search(r"\$\d+\.\d+\s", self.data['lastTrade']).group().replace("$","").strip())
+        df['UNDERLYING_TRADE_PRICE'] = float(re.search(r"[\d.]+(?=\s*\(AS OF)", self.data['lastTrade']).group().replace("$","").strip())
         
         # =========================================================================
         # =========================================================================
@@ -53,6 +53,7 @@ class Data:
         df.expirygroup = df.expirygroup.ffill()
         df.expirygroup = pd.to_datetime(df.expirygroup, format="%B %d, %Y")
         df = df.replace("--",0)
+        df = df.replace(",","",regex=True)
         df = df[~df.expiryDate.isnull()]
         df[['TICKER', 'OPTION_ID']] = df.drillDownURL.str.rsplit("/",n=1).apply(lambda x : pd.Series([x[1].split('-')[0], x[1].split('-')[-1]]))
         
